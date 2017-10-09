@@ -56,7 +56,6 @@ impl ReplicaWriter {
     pub fn new(brokers: &str, topic_name: &str) -> Result<ReplicaWriter> {
         let producer = ClientConfig::new()
             .set("bootstrap.servers", brokers)
-            .set("compression.codec", "gzip")
             .set("message.max.bytes", "10000000")
             .set("api.version.request", "true")
             .create::<FutureProducer<_>>()
